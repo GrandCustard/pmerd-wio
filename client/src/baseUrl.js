@@ -1,3 +1,3 @@
-const baseUrl = 'https://pmerd-wio.azurewebsites.net';
+const baseUrl = 'https://wio-pmerd.azurewebsites.net';
 
 export default baseUrl;
