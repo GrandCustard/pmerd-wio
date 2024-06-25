@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 mongoose
-	.connect(process.env.MONGO_URI)
+	.connect(process.env.REACT_APP_MONGO_URI)
 	.then(() => console.log('Database is connected...'))
 	.catch((err) => console.log(err));
 
@@ -25,6 +25,7 @@ const userSchema = mongoose.Schema({
 const User = new mongoose.model('User', userSchema);
 
 app.get('/get-users', (req, res) => {
+	console.log('sent get request');
 	User.find().then((users) => res.json(users)).catch((err) => console.log(err));
 });
 
@@ -34,6 +35,7 @@ app.post('/create', (req, res) => {
 		name: req.body.name,
 		lastName: req.body.lastName
 	});
+	console.log('saving, running the post');
 
 	newUser.save().then((user) => res.json(user)).catch((err) => console.log(err));
 });
